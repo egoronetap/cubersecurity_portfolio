@@ -31,6 +31,8 @@
 
 После подготовки системы был установлен Wazuh и выполнен первый вход в Dashboard.
 
+![Запущенные службы](screenshots/services.png)
+
 
 
 ## Подключение Windows Agent
