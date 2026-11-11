@@ -1,5 +1,5 @@
 
-# Sysmon Integration with Wazuh
+# Sysmon Integration с Wazuh
 
 ## 1. Цель работы
 
@@ -17,14 +17,7 @@
 
 На Windows Endpoint был установлен Sysmon из набора Microsoft Sysinternals.
 
-После установки проверил состояние службы Sysmon64 и наличие событий в журнале:
-
-`Microsoft-Windows-Sysmon/Operational`
-
-В ходе проверки были обнаружены события:
-
-- Event ID 1: Process Creation.
-- Event ID 5: Process Terminated.
+![Работающая служба Sysmon](screenshots/working_sysmon.jpg)
 
 ## 4. Интеграция Sysmon с Wazuh
 
@@ -37,7 +30,11 @@
 </localfile>
 ```
 
+![Конфигурационный файл](screenshots/configure.jpg)
+
 После изменения конфигурации была перезапущена служба Wazuh Agent.
+
+![Работающий агент](screenshots/win_agent.jpg)
 
 Проверил поступление событий Sysmon на Wazuh Manager.
 
@@ -88,7 +85,12 @@ sudo /var/ossec/bin/wazuh-analysisd -t
 - Description: `Sysmon: Notepad process created`
 - Level: `5`
 
+![Два ивента](screenshots/events_two.jpg)
+
 Таким образом, удалось проверить полный цикл: создание процесса на Windows Endpoint, сбор события Sysmon, передача события в Wazuh и формирование alert по пользовательскому правилу.
+
+![Детали первого ивента](screenshots/first_details.jpg)
+![Детали второго ивента](screenshots/second_details.jpg)
 
 ## 7. Результат
 
